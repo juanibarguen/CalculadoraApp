@@ -85,7 +85,7 @@
                                                                     <constraint firstAttribute="width" secondItem="6bU-ea-1ev" secondAttribute="height" multiplier="5:4" id="rpG-CL-PUy"/>
                                                                 </constraints>
                                                                 <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" title="/">
+                                                                <buttonConfiguration key="configuration" style="plain" title="÷">
                                                                     <backgroundConfiguration key="background">
                                                                         <color key="backgroundColor" red="0.031372549020000001" green="0.050980392159999999" blue="0.070588235289999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     </backgroundConfiguration>
@@ -455,6 +455,7 @@
                     </view>
                     <connections>
                         <outlet property="buttonAC" destination="2gN-ku-IqA" id="NmI-Ep-E0k"/>
+                        <outlet property="buttonResta" destination="oax-hJ-mUT" id="KIB-ks-cJ2"/>
                         <outlet property="displayLabel" destination="wc9-kB-7kM" id="47w-m1-4uC"/>
                         <outlet property="displayOperationLabel" destination="MHz-O1-vfP" id="ggu-0f-DY9"/>
                     </connections>

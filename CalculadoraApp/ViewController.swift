@@ -14,6 +14,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var displayLabel: UILabel!
     @IBOutlet weak var displayOperationLabel: UILabel!
     
+    @IBOutlet weak var buttonResta: UIButton!
+    
+    @IBOutlet weak var buttonSuma: UIButton!
+    
+    
     var firstNumber: Double = 0
     var operation: String = ""
     var isTypingNumber: Bool = false
@@ -28,7 +33,6 @@ class ViewController: UIViewController {
         displayOperationLabel.text = "0"
 
     }
-    
     
     @IBAction func numberButtonPressed(_ sender: UIButton) {
         let number = String(sender.tag)
@@ -61,6 +65,9 @@ class ViewController: UIViewController {
         
     }
     
+    enum operationType {
+        case suma, resta, multiplicacion, division
+    }
     
     @IBAction func operationButton(_ sender: UIButton) {
         operation = String(sender.tag)
@@ -68,26 +75,24 @@ class ViewController: UIViewController {
         isTypingNumber = false
         decimalPoint = false
         
+        // Asignamos el valor ingresado a SubLabel
         var numberMoreOperation = firstNumber
-        displayOperationLabel.text = String(numberMoreOperation)
-        //print(numberMoreOperation)
-        //print(operation)
-        //print(nameOperation)
         
-        if numberMoreOperation.truncatingRemainder(dividingBy: 1) == 0 {
-            displayOperationLabel.text = ("\(Int(numberMoreOperation * (1)))")
-            //print(("\(Int(numberDisplay * (-1)))"))
+        if let buttonTitle = sender.titleLabel?.text {
+               print("El nombre del botón es: \(buttonTitle)")
+           // displayOperationLabel.text = String("\(numberMoreOperation) \(buttonTitle)")
+            displayOperationLabel.text = ("\(Int(numberMoreOperation * (1))) \(buttonTitle)")
         } else {
-            displayOperationLabel.text = ("\(String(format: "%.2f", numberMoreOperation))")
-            //print(("\(String(format: "%.2f", numberDisplay))"))
+            print("El boton no tiene titulo")
         }
+        
         
         
     }
     
     
     @IBAction func operatorPlus(_ sender: UIButton) {
-        var numberDisplay = Double(displayLabel.text!)
+        let numberDisplay = Double(displayLabel.text!)
         
         if let numberDisplay {
             
@@ -104,7 +109,7 @@ class ViewController: UIViewController {
         }else {
             print(" No ")
         }
-        ///print(numberDisplay)
+        //print(numberDisplay)
     }
     
     
