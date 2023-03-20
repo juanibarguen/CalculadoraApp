@@ -10,27 +10,39 @@ import UIKit
 class ViewController: UIViewController {
 
     
+    @IBOutlet weak var buttonAC: UIButton!
     @IBOutlet weak var displayLabel: UILabel!
+    @IBOutlet weak var displayOperationLabel: UILabel!
     
     var firstNumber: Double = 0
     var operation: String = ""
     var isTypingNumber: Bool = false
     var decimalPoint: Bool = false // Variable que indica si ya se ingresó un punto decimal
+    var numberPress = "0"
+    
+    var nameOpetarion = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-    }
+        displayOperationLabel.text = "0"
 
+    }
+    
+    
     @IBAction func numberButtonPressed(_ sender: UIButton) {
         let number = String(sender.tag)
         
         if isTypingNumber {
             displayLabel.text = displayLabel.text! + number
+           // numberPress = displayLabel.text!
+            //print(numberPress)
         } else {
             displayLabel.text = number
+            //print(number)
             isTypingNumber = true
         }
+        
     }
     
     @IBAction func decimalButtonPressed(_ sender: UIButton) {
@@ -55,21 +67,36 @@ class ViewController: UIViewController {
         firstNumber = Double(displayLabel.text!)!
         isTypingNumber = false
         decimalPoint = false
+        
+        var numberMoreOperation = firstNumber
+        displayOperationLabel.text = String(numberMoreOperation)
+        //print(numberMoreOperation)
+        //print(operation)
+        //print(nameOperation)
+        
+        if numberMoreOperation.truncatingRemainder(dividingBy: 1) == 0 {
+            displayOperationLabel.text = ("\(Int(numberMoreOperation * (1)))")
+            //print(("\(Int(numberDisplay * (-1)))"))
+        } else {
+            displayOperationLabel.text = ("\(String(format: "%.2f", numberMoreOperation))")
+            //print(("\(String(format: "%.2f", numberDisplay))"))
+        }
+        
+        
     }
     
     
     @IBAction func operatorPlus(_ sender: UIButton) {
-        print(type(of: displayLabel.text!))
         var numberDisplay = Double(displayLabel.text!)
         
         if let numberDisplay {
             
             if numberDisplay.truncatingRemainder(dividingBy: 1) == 0 {
                 displayLabel.text = ("\(Int(numberDisplay * (-1)))")
-                print(("\(Int(numberDisplay * (-1)))"))
+                //print(("\(Int(numberDisplay * (-1)))"))
             } else {
                 displayLabel.text = ("\(String(format: "%.2f", numberDisplay))")
-                print(("\(String(format: "%.2f", numberDisplay))"))
+                //print(("\(String(format: "%.2f", numberDisplay))"))
             }
             
             
@@ -83,7 +110,7 @@ class ViewController: UIViewController {
     
     
     @IBAction func operationPercent(_ sender: UIButton) {
-        var result = Double(displayLabel.text!)! / 100
+        let result = Double(displayLabel.text!)! / 100
         displayLabel.text = String(result)
     }
     
@@ -92,21 +119,21 @@ class ViewController: UIViewController {
         let secondNumber = Double(displayLabel.text!)!
         var result: Double = 0
         
+        
         switch operation {
         
         case "10":
             result = firstNumber - secondNumber
+            nameOpetarion = "-"
         case "20":
             result = firstNumber + secondNumber
+            nameOpetarion = "+"
         case "30":
             result = firstNumber * secondNumber
+            nameOpetarion = "*"
         case "40":
             result = firstNumber / secondNumber
-        //case "50":
-            //print(" asd ")
-            //result = firstNumber * (secondNumber / 100)
-            //result = Double(displayLabel.text!)! / 100
-            //print(Double(displayLabel.text!)! / 100)
+            nameOpetarion = "/"
         default:
             break
         }
@@ -132,6 +159,8 @@ class ViewController: UIViewController {
         operation = ""
         decimalPoint = false
     }
+    
+    
 }
 
 
