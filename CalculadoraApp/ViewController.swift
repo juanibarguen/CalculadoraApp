@@ -57,6 +57,37 @@ class ViewController: UIViewController {
         decimalPoint = false
     }
     
+    
+    @IBAction func operatorPlus(_ sender: UIButton) {
+        print(type(of: displayLabel.text!))
+        var numberDisplay = Double(displayLabel.text!)
+        
+        if let numberDisplay {
+            
+            if numberDisplay.truncatingRemainder(dividingBy: 1) == 0 {
+                displayLabel.text = ("\(Int(numberDisplay * (-1)))")
+                print(("\(Int(numberDisplay * (-1)))"))
+            } else {
+                displayLabel.text = ("\(String(format: "%.2f", numberDisplay))")
+                print(("\(String(format: "%.2f", numberDisplay))"))
+            }
+            
+            
+            
+        }else {
+            print(" No ")
+        }
+        ///print(numberDisplay)
+    }
+    
+    
+    
+    @IBAction func operationPercent(_ sender: UIButton) {
+        var result = Double(displayLabel.text!)! / 100
+        displayLabel.text = String(result)
+    }
+    
+    
     @IBAction func resultButton(_ sender: UIButton) {
         let secondNumber = Double(displayLabel.text!)!
         var result: Double = 0
@@ -71,8 +102,11 @@ class ViewController: UIViewController {
             result = firstNumber * secondNumber
         case "40":
             result = firstNumber / secondNumber
-        case "50":
-            result = firstNumber * (secondNumber / 100)
+        //case "50":
+            //print(" asd ")
+            //result = firstNumber * (secondNumber / 100)
+            //result = Double(displayLabel.text!)! / 100
+            //print(Double(displayLabel.text!)! / 100)
         default:
             break
         }
