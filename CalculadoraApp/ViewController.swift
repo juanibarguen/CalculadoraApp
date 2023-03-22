@@ -188,20 +188,26 @@ class ViewController: UIViewController {
             displayLabel.text = ("\(String(format: "%.2f", result))")
         }
         
-        
+        var resTemp = ""
         ///
         if firstNumber.truncatingRemainder(dividingBy: 1) == 0 { //El primero es entero
             if secondNumber.truncatingRemainder(dividingBy: 1) == 0 { // El segundo es entero
-                displaySubLabel.text = "\(Int(firstNumber)) \(nameOpetarion) \(Int(secondNumber))"
+                resTemp = "\(Int(firstNumber)) \(nameOpetarion) \(Int(secondNumber))"
+                displaySubLabel.text = resTemp
+
             }else { // El segundo no es entero
-                displaySubLabel.text = ("\(Int(firstNumber)) \(nameOpetarion) \(String(format: "%.2f", secondNumber))")
+                resTemp = ("\(Int(firstNumber)) \(nameOpetarion) \(String(format: "%.2f", secondNumber))")
+                displaySubLabel.text = resTemp
+
             }
-            //displaySubLabel.text = "\(Int(firstNumber)) \(nameOpetarion) \(Int(secondNumber))"
         }else { // El primero no es entero, el segundo?
             if secondNumber.truncatingRemainder(dividingBy: 1) == 0 { // Es entero
-                displaySubLabel.text = "\(String(format: "%.2f", firstNumber)) \(nameOpetarion) \(Int(secondNumber))"
+                resTemp =  "\(String(format: "%.2f", firstNumber)) \(nameOpetarion) \(Int(secondNumber))"
+                displaySubLabel.text = resTemp
+                
             }else { // ninguno de los dos es entero
-                displaySubLabel.text = "\(String(format: "%.2f", firstNumber)) \(nameOpetarion) \(String(format: "%.2f", secondNumber))"
+                resTemp = "\(String(format: "%.2f", firstNumber)) \(nameOpetarion) \(String(format: "%.2f", secondNumber))"
+                displaySubLabel.text = resTemp
                 
             }
         }
