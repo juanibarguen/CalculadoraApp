@@ -27,10 +27,19 @@ class ViewController: UIViewController {
     
     var nameOpetarion = ""
     
+   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         displaySubLabel.text = ""
+        
+        displayLabel.adjustsFontSizeToFitWidth = true
+        displayLabel.minimumScaleFactor = 0.5
+        displaySubLabel.adjustsFontSizeToFitWidth = true
+        displaySubLabel.minimumScaleFactor = 0.5
+        
     }
+    
     
     private func clearDisplay() {
         buttonAC.setTitle("AC", for: .normal)
@@ -83,7 +92,6 @@ class ViewController: UIViewController {
             print(operatorSubLabel)
             if numberSubLabel.truncatingRemainder(dividingBy: 1) == 0 {
                 displaySubLabel.text = ("\(Int(numberSubLabel * (1)))")
-                //print(Double(displaySubLabel.text!)!)
             } else {
                 displaySubLabel.text = ("\(String(format: "%.2f", numberSubLabel)) \(buttonTitle)")
             }
@@ -105,10 +113,7 @@ class ViewController: UIViewController {
                 //print(("\(String(format: "%.2f", numberDisplay))"))
             }
             
-        }else {
-            print(" No ")
         }
-        
     }
     
     
