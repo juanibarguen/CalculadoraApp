@@ -29,64 +29,45 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         displaySubLabel.text = ""
-        
-
     }
     
     private func clearDisplay() {
-            buttonAC.setTitle("AC", for: .normal)
-        
+        buttonAC.setTitle("AC", for: .normal)
         displayLabel.text = "0"
         displaySubLabel.text = ""
         isTypingNumber = false
         firstNumber = 0
         operation = ""
         decimalPoint = false
-        
     }
     
     
     @IBAction func numberButtonPressed(_ sender: UIButton) {
         
         buttonAC.setTitle("C", for: .normal)
-
         let number = String(sender.tag)
         
         if isTypingNumber {
             displayLabel.text = displayLabel.text! + number
-           // numberPress = displayLabel.text!
-            //print(numberPress)
         } else {
             displayLabel.text = number
-            //print(number)
             isTypingNumber = true
         }
         
     }
     
     @IBAction func decimalButtonPressed(_ sender: UIButton) {
-        
-        // Evaluamos que el numero en pantalla no contenga ya un "."
-        if ((displayLabel.text?.contains(".")) != nil) {
-            decimalPoint = false
-        } else {
-            
             if !decimalPoint {
                 displayLabel.text = displayLabel.text! + "."
                 decimalPoint = true
                 isTypingNumber = true
             }
-        }
-        
     }
     
 
     
     @IBAction func operationButton(_ sender: UIButton) {
-        
-        
 
         operation = String(sender.tag)
         firstNumber = Double(displayLabel.text!)!
@@ -101,29 +82,13 @@ class ViewController: UIViewController {
             operatorSubLabel = buttonTitle
             print(operatorSubLabel)
             if numberSubLabel.truncatingRemainder(dividingBy: 1) == 0 {
-                //print("El número no tiene decimales")
-                //displayOperationLabel.text = ("\(String(format: "%.2f", numberMoreOperation)) \(buttonTitle)")
-                
                 displaySubLabel.text = ("\(Int(numberSubLabel * (1)))")
-                print(Double(displaySubLabel.text!)!)
-                
+                //print(Double(displaySubLabel.text!)!)
             } else {
-                print("El número tiene decimales")
-                //displayOperationLabel.text = ("\(Int(numberMoreOperation * (1))) \(buttonTitle)")
-                
-                
                 displaySubLabel.text = ("\(String(format: "%.2f", numberSubLabel)) \(buttonTitle)")
-
             }
-            
-        } else {
-            // displayOperationLabel.text = ("\(String(format: "%.2f", numberMoreOperation)) \(buttonTitle)")
-            print("El boton no tiene titulo")
         }
-        
-        
         displayLabel.text = "0"
-
     }
     
     
@@ -140,12 +105,10 @@ class ViewController: UIViewController {
                 //print(("\(String(format: "%.2f", numberDisplay))"))
             }
             
-            
-            
         }else {
             print(" No ")
         }
-        //print(numberDisplay)
+        
     }
     
     
@@ -159,7 +122,6 @@ class ViewController: UIViewController {
     @IBAction func resultButton(_ sender: UIButton) {
         let secondNumber = Double(displayLabel.text!)!
         var result: Double = 0
-        
         
         switch operation {
         
@@ -190,35 +152,28 @@ class ViewController: UIViewController {
         
         var resTemp = ""
         ///
-        if firstNumber.truncatingRemainder(dividingBy: 1) == 0 { //El primero es entero
+        if firstNumber.truncatingRemainder(dividingBy: 1) == 0 { // El primero es entero
             if secondNumber.truncatingRemainder(dividingBy: 1) == 0 { // El segundo es entero
+                // Los dos son enteros
                 resTemp = "\(Int(firstNumber)) \(nameOpetarion) \(Int(secondNumber))"
                 displaySubLabel.text = resTemp
 
-            }else { // El segundo no es entero
+            }else { // El primero es estero, el segundo no
                 resTemp = ("\(Int(firstNumber)) \(nameOpetarion) \(String(format: "%.2f", secondNumber))")
                 displaySubLabel.text = resTemp
 
             }
-        }else { // El primero no es entero, el segundo?
-            if secondNumber.truncatingRemainder(dividingBy: 1) == 0 { // Es entero
+        }else { // El primero no es entero
+            if secondNumber.truncatingRemainder(dividingBy: 1) == 0 { // El primero no pero el segundo si es entero
                 resTemp =  "\(String(format: "%.2f", firstNumber)) \(nameOpetarion) \(Int(secondNumber))"
                 displaySubLabel.text = resTemp
                 
-            }else { // ninguno de los dos es entero
+            }else { // Ninguno de los dos es entero
                 resTemp = "\(String(format: "%.2f", firstNumber)) \(nameOpetarion) \(String(format: "%.2f", secondNumber))"
                 displaySubLabel.text = resTemp
                 
             }
         }
-
-        //print(firstNumber)
-        //print(secondNumber)
-
-        
-        
-        //displaySubLabel.text = ("\(Double(displaySubLabel.text!)!) \(nameOpetarion) \(secondNumber)")
-
         
         isTypingNumber = false
         decimalPoint = false
@@ -226,13 +181,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func clearButtonPressed(_ sender: UIButton) {
-        
-        
-        
         clearDisplay()
-
-        
-        
     }
     
     
