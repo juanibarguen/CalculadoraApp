@@ -85,11 +85,11 @@ class ViewController: UIViewController {
         
         // Asignamos el valor ingresado a SubLabel
         let numberSubLabel = firstNumber
-        var operatorSubLabel = ""
+        //var operatorSubLabel = ""
         if let buttonTitle = sender.titleLabel?.text {
             
-            operatorSubLabel = buttonTitle
-            print(operatorSubLabel)
+            //operatorSubLabel = buttonTitle
+            //print(operatorSubLabel)
             if numberSubLabel.truncatingRemainder(dividingBy: 1) == 0 {
                 displaySubLabel.text = ("\(Int(numberSubLabel * (1)))")
             } else {
@@ -138,10 +138,10 @@ class ViewController: UIViewController {
             nameOpetarion = "+"
         case "30":
             result = firstNumber * secondNumber
-            nameOpetarion = "*"
+            nameOpetarion = "×"
         case "40":
             result = firstNumber / secondNumber
-            nameOpetarion = "/"
+            nameOpetarion = "÷"
         default:
             break
         }
