@@ -24,10 +24,8 @@ class ViewController: UIViewController {
     var isTypingNumber: Bool = false
     var decimalPoint: Bool = false // Variable que indica si ya se ingresó un punto decimal
     var numberPress = "0"
-    
     var nameOpetarion = ""
     
-   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,8 +117,12 @@ class ViewController: UIViewController {
     
     
     @IBAction func operationPercent(_ sender: UIButton) {
-        let result = Double(displayLabel.text!)! / 100
-        displayLabel.text = String(result)
+        if (operation == ""){
+            let result = Double(displayLabel.text!)! / 100
+            displayLabel.text = String(result)
+        }else {
+            displayLabel.text = String(firstNumber / 100)
+        }
     }
     
     
