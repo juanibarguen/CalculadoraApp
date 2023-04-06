@@ -52,10 +52,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var number8: UIButton!
     @IBOutlet weak var number9: UIButton!
     @IBOutlet weak var buttonComa: UIButton!
-    @IBOutlet weak var switchMode: UISwitch!
     
+    //Prueba
     
-  
+    @IBOutlet weak var viewPrueba: UIView!
+    
     //DARK
 //    var viewTopBackground = UIColor(named: "#090D12")
 //    var viewBottomBackground = UIColor(named: "#1D1F24")
@@ -75,6 +76,29 @@ class ViewController: UIViewController {
     
     
     
+        let numbersBackground = [UIColor(named: "numbersBackground")?.resolvedColor(with: UITraitCollection(userInterfaceStyle: .dark))]
+        let operatorsBackground = [UIColor(named: "operatorsBackground")?.resolvedColor(with: UITraitCollection(userInterfaceStyle: .dark))]
+        let textLabelColor = [UIColor(named: "textLabelColor")?.resolvedColor(with: UITraitCollection(userInterfaceStyle: .dark))]
+        let textNumbers = [UIColor(named: "textNumbers")?.resolvedColor(with: UITraitCollection(userInterfaceStyle: .dark))]
+        let textOperations = [UIColor(named: "textOperations")?.resolvedColor(with: UITraitCollection(userInterfaceStyle: .dark))]
+        let textSubLabelColor = [UIColor(named: "textSubLabelColor")?.resolvedColor(with: UITraitCollection(userInterfaceStyle: .dark))]
+        let viewButtonBackground = [UIColor(named: "viewButtonBackground")?.resolvedColor(with: UITraitCollection(userInterfaceStyle: .dark))]
+        let viewTopBackground = [UIColor(named: "viewTopBackground")?.resolvedColor(with: UITraitCollection(userInterfaceStyle: .dark))]
+    
+    
+//    if traitCollection.userInterfaceStyle == .dark {
+//        // Modo oscuro activado
+//        // Hacer algo en consecuencia
+//        asd.text = " ASD  ADS "
+//
+//    } else {
+//        // Modo claro activado
+//        // Hacer algo en consecuencia
+//    }
+
+    
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         displaySubLabel.text = ""
@@ -84,19 +108,13 @@ class ViewController: UIViewController {
         displaySubLabel.adjustsFontSizeToFitWidth = true
         displaySubLabel.minimumScaleFactor = 0.5
         
-       //switchMode.isOn = false
 
         setupButtons()
-        //darkMode()
-        
+                
         
     }
     
-    
-    
-    @IBAction func switchMode(_ sender: Any) {
-        setMode()
-    }
+
     
     
 
