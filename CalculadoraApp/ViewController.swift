@@ -212,21 +212,21 @@ class ViewController: UIViewController {
         if firstNumber.truncatingRemainder(dividingBy: 1) == 0 { // El primero es entero
             if secondNumber.truncatingRemainder(dividingBy: 1) == 0 { // El segundo es entero
                 // Los dos son enteros
-                resTemp = "\(Int(firstNumber)) \(nameOpetarion) \(Int(secondNumber))"
+                resTemp = "\(Int(firstNumber))  \(nameOpetarion)  \(Int(secondNumber))"
                 displaySubLabel.text = resTemp
 
             }else { // El primero es estero, el segundo no
-                resTemp = ("\(Int(firstNumber)) \(nameOpetarion) \(String(format: "%.2f", secondNumber))")
+                resTemp = ("\(Int(firstNumber))  \(nameOpetarion)  \(String(format: "%.2f", secondNumber))")
                 displaySubLabel.text = resTemp
 
             }
         }else { // El primero no es entero
             if secondNumber.truncatingRemainder(dividingBy: 1) == 0 { // El primero no pero el segundo si es entero
-                resTemp =  "\(String(format: "%.2f", firstNumber)) \(nameOpetarion) \(Int(secondNumber))"
+                resTemp =  "\(String(format: "%.2f", firstNumber))  \(nameOpetarion)  \(Int(secondNumber))"
                 displaySubLabel.text = resTemp
                 
             }else { // Ninguno de los dos es entero
-                resTemp = "\(String(format: "%.2f", firstNumber)) \(nameOpetarion) \(String(format: "%.2f", secondNumber))"
+                resTemp = "\(String(format: "%.2f", firstNumber))  \(nameOpetarion)  \(String(format: "%.2f", secondNumber))"
                 displaySubLabel.text = resTemp
                 
             }
