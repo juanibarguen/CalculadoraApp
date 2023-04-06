@@ -10,13 +10,50 @@ import UIKit
 class ViewController: UIViewController {
 
     
-    @IBOutlet weak var buttonAC: UIButton!
-    @IBOutlet weak var displayLabel: UILabel!
+    
+    
     @IBOutlet weak var displaySubLabel: UILabel!
+    
+    @IBOutlet weak var displayLabel: UILabel!
+    
+    // Operations
+    
+    
+    @IBOutlet weak var buttonAC: UIButton!
+    
+    @IBOutlet weak var buttonResultado: UIButton!
     
     @IBOutlet weak var buttonResta: UIButton!
     
     @IBOutlet weak var buttonSuma: UIButton!
+    
+    @IBOutlet weak var buttonMultiplicacion: UIButton!
+    
+    @IBOutlet weak var buttonDivision: UIButton!
+    
+    @IBOutlet weak var buttonPorcentaje: UIButton!
+    
+    @IBOutlet weak var buttonPlus: UIButton!
+
+    
+    
+    
+    
+    // Numbers
+    @IBOutlet weak var number0: UIButton!
+    @IBOutlet weak var number1: UIButton!
+    @IBOutlet weak var number2: UIButton!
+    @IBOutlet weak var number3: UIButton!
+    @IBOutlet weak var number4: UIButton!
+    @IBOutlet weak var number5: UIButton!
+    @IBOutlet weak var number6: UIButton!
+    @IBOutlet weak var number7: UIButton!
+    @IBOutlet weak var number8: UIButton!
+    @IBOutlet weak var number9: UIButton!
+    
+    
+    @IBOutlet weak var buttonComa: UIButton!
+    
     
     var operating: Bool = false
     var firstNumber: Double = 0
@@ -36,6 +73,19 @@ class ViewController: UIViewController {
         displaySubLabel.adjustsFontSizeToFitWidth = true
         displaySubLabel.minimumScaleFactor = 0.5
         
+        
+        setupButtons()
+    }
+    
+    private func setupButtons(){
+        let totalButtons = [number0,number1,number2,number3,number4,number5,number5,number6,number7,number8,number9,buttonResultado,buttonResta,buttonSuma,buttonMultiplicacion,buttonDivision,buttonPorcentaje,buttonPlus,buttonAC,buttonComa]
+        
+        totalButtons.forEach {
+            $0!.layer.cornerRadius = 15.0
+            $0!.layer.masksToBounds = true
+        }
+        //totalButtons.layer.cornerRadius = 15.0
+        //totalButtons.layer.masksToBounds = true
     }
     
     
