@@ -11,6 +11,7 @@ class ViewController: UIViewController {
 
     
     
+    @IBOutlet weak var viewTop: UIView!
     
     @IBOutlet weak var displaySubLabel: UILabel!
     
@@ -50,9 +51,18 @@ class ViewController: UIViewController {
     @IBOutlet weak var number7: UIButton!
     @IBOutlet weak var number8: UIButton!
     @IBOutlet weak var number9: UIButton!
-    
-    
     @IBOutlet weak var buttonComa: UIButton!
+    @IBOutlet weak var switchMode: UISwitch!
+    
+    
+  
+    //DARK
+//    var viewTopBackground = UIColor(named: "#090D12")
+//    var viewBottomBackground = UIColor(named: "#1D1F24")
+//    //LIGHT
+//    var viewTopBackgroundL = UIColor(named: "#F1F5F8")
+//    var viewBottomBackgroundL = UIColor(named: "#FFFFFF")
+
     
     
     var operating: Bool = false
@@ -64,6 +74,7 @@ class ViewController: UIViewController {
     var nameOpetarion = ""
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         displaySubLabel.text = ""
@@ -73,8 +84,31 @@ class ViewController: UIViewController {
         displaySubLabel.adjustsFontSizeToFitWidth = true
         displaySubLabel.minimumScaleFactor = 0.5
         
-        
+       //switchMode.isOn = false
+
         setupButtons()
+        //darkMode()
+        
+        
+    }
+    
+    
+    
+    @IBAction func switchMode(_ sender: Any) {
+        setMode()
+    }
+    
+    
+
+    private func setMode() {
+        print("que pasa")
+        if self.traitCollection.userInterfaceStyle == .dark {
+            // el modo oscuro está activado
+            print("el modo oscuro está activado")
+        } else {
+            // el modo claro está activado
+            print("el modo claro está activado")
+        }
     }
     
     private func setupButtons(){

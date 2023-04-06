@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -30,9 +31,9 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="AC">
                                                     <backgroundConfiguration key="background">
-                                                        <color key="backgroundColor" red="0.031372549020000001" green="0.050980392159999999" blue="0.070588235289999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" name="operatorsBackground"/>
                                                     </backgroundConfiguration>
-                                                    <color key="baseForegroundColor" red="0.45882352939999999" green="0.81960784310000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="baseForegroundColor" name="textOperations"/>
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="clearButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mjf-F9-qVn"/>
@@ -429,8 +430,15 @@
                                             </label>
                                         </subviews>
                                     </stackView>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uF6-57-CnW">
+                                        <rect key="frame" x="173" y="101" width="49" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="switchMode:" destination="BYZ-38-t0r" eventType="valueChanged" id="jIK-jd-nCS"/>
+                                        </connections>
+                                    </switch>
                                 </subviews>
-                                <color key="backgroundColor" red="0.035294117647058823" green="0.050980392156862744" blue="0.070588235294117646" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" name="viewTopBackground"/>
                                 <constraints>
                                     <constraint firstItem="wdH-vm-uyZ" firstAttribute="leading" secondItem="hLG-hP-aQO" secondAttribute="leading" constant="20" id="4W9-4L-fME"/>
                                     <constraint firstAttribute="trailing" secondItem="wdH-vm-uyZ" secondAttribute="trailing" constant="40" id="XMf-pq-9Rl"/>
@@ -439,7 +447,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" red="0.11372549019607843" green="0.12156862745098039" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" name="viewButtonBackground"/>
                         <constraints>
                             <constraint firstItem="9j1-W0-pLf" firstAttribute="top" secondItem="hLG-hP-aQO" secondAttribute="bottom" constant="40" id="B2S-j0-dcz"/>
                             <constraint firstItem="hLG-hP-aQO" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="E15-xJ-2mn"/>
@@ -472,6 +480,8 @@
                         <outlet property="number7" destination="T8c-aq-Rx2" id="VL6-zg-pgf"/>
                         <outlet property="number8" destination="LKs-Gc-vbU" id="Yv6-ly-q4m"/>
                         <outlet property="number9" destination="pFW-GK-8Rc" id="za8-yp-EdE"/>
+                        <outlet property="switchMode" destination="uF6-57-CnW" id="quh-2f-13r"/>
+                        <outlet property="viewTop" destination="hLG-hP-aQO" id="Y4Z-Us-C0m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -479,4 +489,18 @@
             <point key="canvasLocation" x="67.938931297709928" y="12.67605633802817"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="operatorsBackground">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="textOperations">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="viewButtonBackground">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="viewTopBackground">
+            <color red="0.94509803921568625" green="0.96078431372549022" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>
