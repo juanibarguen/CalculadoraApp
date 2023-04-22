@@ -11,13 +11,26 @@ class ViewController: UIViewController {
 
     
     
-    @IBOutlet weak var viewTop: UIView!
     
-    @IBOutlet weak var displaySubLabel: UILabel!
     
     @IBOutlet weak var displayLabel: UILabel!
     
+    
+    
+    
+    
+    //@IBOutlet weak var viewTop: UIView!
+    
+   // @IBOutlet weak var displaySubLabel: UILabel!
+    
+    //@IBOutlet weak var displayLabel: UILabel!
+    
     // Operations
+    
+    @IBOutlet weak var displaySubLabel: UILabel!
+    
+    
+    
     
     
     @IBOutlet weak var buttonAC: UIButton!
@@ -54,9 +67,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var buttonComa: UIButton!
     
     //Prueba
-    
-    @IBOutlet weak var viewPrueba: UIView!
-    
+        
     //DARK
 //    var viewTopBackground = UIColor(named: "#090D12")
 //    var viewBottomBackground = UIColor(named: "#1D1F24")
@@ -101,7 +112,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         
-        viewTop.isHidden = true
+        //viewTop.isHidden = true
         
         let viewWidth = self.view.frame.size.width * 2
 
@@ -127,8 +138,11 @@ class ViewController: UIViewController {
         number0.layer.shadowRadius = 2
         number0.layer.masksToBounds = false
         
+        // Mover la vista2 al frente (por encima de la vista1)
+        self.view.bringSubviewToFront(displayLabel)
+        self.view.bringSubviewToFront(displaySubLabel)
         
-        
+
         super.viewDidLoad()
         displaySubLabel.text = ""
         
