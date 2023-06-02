@@ -11,14 +11,11 @@ class ViewController: UIViewController {
 
     
     
-    @IBOutlet weak var viewTop: UIView!
     
-    @IBOutlet weak var displaySubLabel: UILabel!
     
     @IBOutlet weak var displayLabel: UILabel!
     
-    // Operations
-    
+    @IBOutlet weak var displaySubLabel: UILabel!
     
     @IBOutlet weak var buttonAC: UIButton!
     
@@ -35,10 +32,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var buttonPorcentaje: UIButton!
     
     @IBOutlet weak var buttonPlus: UIButton!
-
-    
-    
-    
     
     // Numbers
     @IBOutlet weak var number0: UIButton!
@@ -53,19 +46,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var number9: UIButton!
     @IBOutlet weak var buttonComa: UIButton!
     
-    //Prueba
-    
-    @IBOutlet weak var viewPrueba: UIView!
-    
-    //DARK
-//    var viewTopBackground = UIColor(named: "#090D12")
-//    var viewBottomBackground = UIColor(named: "#1D1F24")
-//    //LIGHT
-//    var viewTopBackgroundL = UIColor(named: "#F1F5F8")
-//    var viewBottomBackgroundL = UIColor(named: "#FFFFFF")
-
-    
-    
     var operating: Bool = false
     var firstNumber: Double = 0
     var operation: String = ""
@@ -74,8 +54,7 @@ class ViewController: UIViewController {
     var numberPress = "0"
     var nameOpetarion = ""
     
-    
-    
+    // Asignamos colores en variables
         let numbersBackground = [UIColor(named: "numbersBackground")?.resolvedColor(with: UITraitCollection(userInterfaceStyle: .dark))]
         let operatorsBackground = [UIColor(named: "operatorsBackground")?.resolvedColor(with: UITraitCollection(userInterfaceStyle: .dark))]
         let textLabelColor = [UIColor(named: "textLabelColor")?.resolvedColor(with: UITraitCollection(userInterfaceStyle: .dark))]
@@ -86,22 +65,8 @@ class ViewController: UIViewController {
         let viewTopBackground = [UIColor(named: "viewTopBackground")?.resolvedColor(with: UITraitCollection(userInterfaceStyle: .dark))]
     
     
-//    if traitCollection.userInterfaceStyle == .dark {
-//        // Modo oscuro activado
-//        // Hacer algo en consecuencia
-//        asd.text = " ASD  ADS "
-//
-//    } else {
-//        // Modo claro activado
-//        // Hacer algo en consecuencia
-//    }
-
-
-
-    
     override func viewDidLoad() {
-        
-        viewTop.isHidden = true
+        super.viewDidLoad()
         
         let viewWidth = self.view.frame.size.width * 2
 
@@ -121,32 +86,18 @@ class ViewController: UIViewController {
         upperView.backgroundColor = UIColor(named: "viewTopBackground")
         view.addSubview(upperView)
         
-        number0.layer.shadowColor = UIColor.black.cgColor
-        number0.layer.shadowOffset = CGSize(width: 0, height: 2)
-        number0.layer.shadowOpacity = 0.5
-        number0.layer.shadowRadius = 2
-        number0.layer.masksToBounds = false
-        
-        
-        
-        super.viewDidLoad()
+        // Mover la vistaInferior al frente (por encima de la vistaSuperior)
+        self.view.bringSubviewToFront(displayLabel)
+
+ 
         displaySubLabel.text = ""
-        
         displayLabel.adjustsFontSizeToFitWidth = true
         displayLabel.minimumScaleFactor = 0.5
         displaySubLabel.adjustsFontSizeToFitWidth = true
         displaySubLabel.minimumScaleFactor = 0.5
-        
-
-        setupButtons()
-      
 
     }
     
-
-    
-    
-
     private func setMode() {
         if self.traitCollection.userInterfaceStyle == .dark {
             // el modo oscuro está activado
@@ -157,18 +108,7 @@ class ViewController: UIViewController {
         }
     }
     
-    private func setupButtons(){
-        let totalButtons = [number0,number1,number2,number3,number4,number5,number5,number6,number7,number8,number9,buttonResultado,buttonResta,buttonSuma,buttonMultiplicacion,buttonDivision,buttonPorcentaje,buttonPlus,buttonAC,buttonComa]
-        
-        totalButtons.forEach {
-            $0!.layer.cornerRadius = 15.0
-            $0!.layer.masksToBounds = true
-        }
-        //totalButtons.layer.cornerRadius = 15.0
-        //totalButtons.layer.masksToBounds = true
-    }
-    
-    
+    // Limpiar resultado
     private func clearDisplay() {
         buttonAC.setTitle("AC", for: .normal)
         displayLabel.text = "0"
@@ -179,9 +119,7 @@ class ViewController: UIViewController {
         decimalPoint = false
     }
     
-    
     @IBAction func numberButtonPressed(_ sender: UIButton) {
-        
         buttonAC.setTitle("C", for: .normal)
         let number = String(sender.tag)
         
@@ -191,21 +129,17 @@ class ViewController: UIViewController {
             displayLabel.text = number
             isTypingNumber = true
         }
-        
     }
     
     @IBAction func decimalButtonPressed(_ sender: UIButton) {
-            if !decimalPoint {
-                displayLabel.text = displayLabel.text! + "."
-                decimalPoint = true
-                isTypingNumber = true
-            }
+        if !decimalPoint {
+            displayLabel.text = displayLabel.text! + "."
+            decimalPoint = true
+            isTypingNumber = true
+        }
     }
     
-
-    
     @IBAction func operationButton(_ sender: UIButton) {
-
         operation = String(sender.tag)
         firstNumber = Double(displayLabel.text!)!
         isTypingNumber = false
@@ -232,19 +166,13 @@ class ViewController: UIViewController {
         let numberDisplay = Double(displayLabel.text!)
         
         if let numberDisplay {
-            
             if numberDisplay.truncatingRemainder(dividingBy: 1) == 0 {
                 displayLabel.text = ("\(Int(numberDisplay * (-1)))")
-                //print(("\(Int(numberDisplay * (-1)))"))
             } else {
                 displayLabel.text = ("\(String(format: "%.2f", numberDisplay))")
-                //print(("\(String(format: "%.2f", numberDisplay))"))
             }
-            
         }
     }
-    
-    
     
     @IBAction func operationPercent(_ sender: UIButton) {
         if (operation == ""){
@@ -280,15 +208,15 @@ class ViewController: UIViewController {
         
         
         if result.truncatingRemainder(dividingBy: 1) == 0 {
-            // El resultado es entero, se muestra sin decimales
+            // El resultado es entero: se muestra sin decimales
             displayLabel.text = ("\(Int(result))")
         } else {
-            // El resultado no es entero, se muestra con dos decimales
+            // El resultado no es entero: se muestra con dos decimales
             displayLabel.text = ("\(String(format: "%.2f", result))")
         }
         
         var resTemp = ""
-        ///
+        
         if firstNumber.truncatingRemainder(dividingBy: 1) == 0 { // El primero es entero
             if secondNumber.truncatingRemainder(dividingBy: 1) == 0 { // El segundo es entero
                 // Los dos son enteros
@@ -308,18 +236,16 @@ class ViewController: UIViewController {
             }else { // Ninguno de los dos es entero
                 resTemp = "\(String(format: "%.2f", firstNumber))  \(nameOpetarion)  \(String(format: "%.2f", secondNumber))"
                 displaySubLabel.text = resTemp
-                
             }
         }
-        
         isTypingNumber = false
         decimalPoint = false
-        
     }
     
     @IBAction func clearButtonPressed(_ sender: UIButton) {
         clearDisplay()
     }
+    
     
     
     
